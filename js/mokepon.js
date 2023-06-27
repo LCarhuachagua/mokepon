@@ -1,6 +1,10 @@
 let ataqueJugador
 let ataqueEnemigo
 let ataques = ['Fuego','Agua','Tierra']
+let mensajeCombate = " "
+let vidasJugador = 3
+let vidasEnemigo = 3
+let parrafo
 
 function aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -58,17 +62,41 @@ function ataqueAleatorioEnemigo(){
 }
 
 function crearMensaje(){
+    mensajeCombate = combate(ataqueJugador, ataqueEnemigo)
+    
     let sectionMensajes = document.getElementById('mensajes')
 
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = 'Tu mascota atacó con '+ ataqueJugador + ' El enemigo atacó con '+ ataqueEnemigo + ' Pendiente'
+    parrafo = document.createElement('p')
+
+    if(vidasJugador == 0){
+        parrafo.innerHTML = "Fin del juego, Has perdido 😭😭😭"
+    }else if (vidasEnemigo == 0){
+        parrafo.innerHTML = "Fin del juego, Has ganado 😁🥳🤩"
+    }else {
+        parrafo.innerHTML = 'Tu mascota atacó con '+ ataqueJugador + ' El enemigo atacó con '+ ataqueEnemigo + ' El resultado es: '+ mensajeCombate
+    }
 
     sectionMensajes.appendChild(parrafo)
 }
 
+function combate(ataqueJugador, ataqueEnemigo){
+    let spanVidasJugador = document.getElementById('vidas-jugador')
+    let spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
-
-
+    while((vidasJugador > 0)&&(vidasEnemigo > 0)){
+        if (ataqueJugador == ataqueEnemigo){
+            return mensajeCombate = "Empate"
+        }else if ((ataqueJugador == ataques[0] && ataqueEnemigo == ataques[2])||(ataqueJugador == ataques[1] && ataqueEnemigo == ataques[0])||(ataqueJugador == ataques[2] && ataqueEnemigo == ataques[1])){
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
+            return mensajeCombate = "Ganaste"
+        }else if ((ataqueJugador == ataques[0] && ataqueEnemigo == ataques[1])||(ataqueJugador == ataques[1] && ataqueEnemigo == ataques[2])||(ataqueJugador == ataques[2] && ataqueEnemigo == ataques[0])){
+            vidasJugador--
+            spanVidasJugador.innerHTML = vidasJugador
+            return mensajeCombate = "Perdiste"
+        }   
+    }
+}
 
 function iniciarJuego(){
     let btnMascota = document.getElementById('boton-mascota')
