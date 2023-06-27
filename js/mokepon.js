@@ -5,6 +5,10 @@ let mensajeCombate = " "
 let vidasJugador = 3
 let vidasEnemigo = 3
 let parrafo
+let botonFuego
+let botonAgua
+let botonTierra
+let btnMascota
 
 function aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -18,6 +22,12 @@ function seleccionarMascotaEnemigo(){
 }
 
 function seleccionarMascotaJugador(){
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+    sectionSeleccionarMascota.style.display = 'none'
+
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'block'
+
     let radiobtnHipodoge = document.getElementById('Hipodoge').checked
     let radiobtnCapipepo = document.getElementById('Capipepo').checked
     let radiobtnRatigueya = document.getElementById('Ratigueya').checked
@@ -38,6 +48,7 @@ function seleccionarMascotaJugador(){
         alert('Selecciona una mascota')
     }
     seleccionarMascotaEnemigo()
+
 }
 
 function ataqueFuego(){
@@ -63,17 +74,23 @@ function ataqueAleatorioEnemigo(){
 
 function crearMensaje(){
     mensajeCombate = combate(ataqueJugador, ataqueEnemigo)
-    
+    btnMascota.disabled = true
+
+    let sectionReiniciar = document.getElementById('reiniciar')
+
     let sectionMensajes = document.getElementById('mensajes')
 
     parrafo = document.createElement('p')
+    parrafo.innerHTML = 'Tu mascota atacó con '+ ataqueJugador + ' El enemigo atacó con '+ ataqueEnemigo + ' El resultado es: '+ mensajeCombate
 
     if(vidasJugador == 0){
         parrafo.innerHTML = "Fin del juego, Has perdido 😭😭😭"
+        sectionReiniciar.style.display = 'block'
+        deshabilitarBotones()
     }else if (vidasEnemigo == 0){
         parrafo.innerHTML = "Fin del juego, Has ganado 😁🥳🤩"
-    }else {
-        parrafo.innerHTML = 'Tu mascota atacó con '+ ataqueJugador + ' El enemigo atacó con '+ ataqueEnemigo + ' El resultado es: '+ mensajeCombate
+        sectionReiniciar.style.display = 'block'
+        deshabilitarBotones()
     }
 
     sectionMensajes.appendChild(parrafo)
@@ -96,16 +113,33 @@ function combate(ataqueJugador, ataqueEnemigo){
             return mensajeCombate = "Perdiste"
         }   
     }
+
+}
+
+function deshabilitarBotones(){
+    botonFuego.disabled = true
+    botonAgua.disabled = true
+    botonTierra.disabled = true
+}
+
+function reiniciarJuego(){
+    location.reload()
 }
 
 function iniciarJuego(){
-    let btnMascota = document.getElementById('boton-mascota')
+    btnMascota = document.getElementById('boton-mascota')
     btnMascota.addEventListener('click',seleccionarMascotaJugador)
-    let botonFuego = document.getElementById('boton-fuego')
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'none'
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'none'
+    botonFuego = document.getElementById('boton-fuego')
     botonFuego.addEventListener('click',ataqueFuego)
-    let botonAgua = document.getElementById('boton-agua')
+    botonAgua = document.getElementById('boton-agua')
     botonAgua.addEventListener('click',ataqueAgua)
-    let botonTierra = document.getElementById('boton-tierra')
+    botonTierra = document.getElementById('boton-tierra')
     botonTierra.addEventListener('click',ataqueTierra)
+    let botonReiniciar = document.getElementById('boton-reiniciar')
+    botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 window.addEventListener('load', iniciarJuego)
