@@ -1,21 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+body{
+    font-family: 'Concert One', cursive;
+    background-color: #11009E;
+}
+
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .titulo {
-    color: lightpink;
-    width: 310px;
-    height: 50px;
-    background-color: teal;
+    color: white;
+    font-size: 40px;
 }
-label {
-    background-color: tomato;
-    width: 310 px;
-    height: 50px;
+
+.subtitulo{
+    color: white;
+    font-size: 36px;
 }
-input {
-    background-color: lightblue;
-    width: 310px;
-    height: 50px;
+
+.tarjetas{
+    display: flex;
+    gap : 10px;
 }
-button {
-    background-color: lightgreen;
-    width: 310px;
-    height: 50px;
+
+.tarjeta-de-mokepon{
+    width: 180px;
+    height: 100px;
+    background: #4942E4;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
+
+.tarjeta-de-mokepon img{
+    width: 80px;
+}
+
+input{
+    display: none;
+}
+
+#boton-mascota{
+    background: blueviolet;
+    padding: 5px;
+    margin: 10px;
+    border: 2px chocolate solid;
+}    
