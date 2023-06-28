@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Press+Start+2P&display=swap');
+
 
 body{
-    font-family: 'Concert One', cursive;
-    background-color: #11009E;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #164B60;
 }
 
 #seleccionar-mascota {
@@ -13,13 +14,15 @@ body{
 }
 
 .titulo {
+    font-family: 'Concert One', cursive;
     color: white;
     font-size: 40px;
 }
 
 .subtitulo{
     color: white;
-    font-size: 36px;
+    font-size: 16px;
+    margin: 0px 0px 25px 0px;
 }
 
 .tarjetas{
@@ -28,9 +31,9 @@ body{
 }
 
 .tarjeta-de-mokepon{
-    width: 180px;
+    width: 300px;
     height: 100px;
-    background: #4942E4;
+    background: #1B6B93;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
@@ -48,9 +51,30 @@ input{
     display: none;
 }
 
+#seleccionar-ataque{
+    flex-direction: column;
+    align-items: center;
+}
+
 #boton-mascota{
-    background: blueviolet;
+    width: 300px;
     padding: 5px;
     margin: 10px;
-    border: 2px chocolate solid;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    margin-top: 30px;
 }    
+
+.boton-de-ataque{
+    background-color: #4FC0D0;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border-color: transparent;
+    width: 100px;
+    color: white;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}

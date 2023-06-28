@@ -26,7 +26,7 @@ function seleccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = 'none'
 
     let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
-    sectionSeleccionarAtaque.style.display = 'block'
+    sectionSeleccionarAtaque.style.display = 'flex'
 
     let radiobtnHipodoge = document.getElementById('Hipodoge').checked
     let radiobtnCapipepo = document.getElementById('Capipepo').checked
