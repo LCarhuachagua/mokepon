@@ -1,7 +1,7 @@
 let ataqueJugador
 let ataqueEnemigo
+let mensajeCombate = ''
 let ataques = ['Fuego','Agua','Tierra']
-let mensajeCombate = " "
 let vidasJugador = 3
 let vidasEnemigo = 3
 let parrafo
@@ -74,26 +74,32 @@ function ataqueAleatorioEnemigo(){
 
 function crearMensaje(){
     mensajeCombate = combate(ataqueJugador, ataqueEnemigo)
-    btnMascota.disabled = true
 
     let sectionReiniciar = document.getElementById('reiniciar')
 
-    let sectionMensajes = document.getElementById('mensajes')
+    let mensajeResultado = document.getElementById('resultado')
+    let mensajeAtaqueJugador = document.getElementById('ataques-del-jugador')
+    let mensajeAtaqueEnemigo = document.getElementById('ataques-del-enemigo')
 
-    parrafo = document.createElement('p')
-    parrafo.innerHTML = 'Tu mascota atacó con '+ ataqueJugador + ' El enemigo atacó con '+ ataqueEnemigo + ' El resultado es: '+ mensajeCombate
+    let nuevoAtaqueDelJugador = document.createElement('p')
+    let nuevoAtaqueDelEnemigo = document.createElement('p')
+
+    mensajeResultado.innerHTML = mensajeCombate
+    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+
+    mensajeAtaqueJugador.appendChild(nuevoAtaqueDelJugador)
+    mensajeAtaqueEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 
     if(vidasJugador == 0){
-        parrafo.innerHTML = "Fin del juego, Has perdido 😭😭😭"
+        mensajeResultado.innerHTML = "Fin del juego, Has perdido 😭😭😭"
         sectionReiniciar.style.display = 'block'
         deshabilitarBotones()
     }else if (vidasEnemigo == 0){
-        parrafo.innerHTML = "Fin del juego, Has ganado 😁🥳🤩"
+        mensajeResultado.innerHTML = "Fin del juego, Has ganado 😁🥳🤩"
         sectionReiniciar.style.display = 'block'
         deshabilitarBotones()
     }
-
-    sectionMensajes.appendChild(parrafo)
 }
 
 function combate(ataqueJugador, ataqueEnemigo){
@@ -102,15 +108,15 @@ function combate(ataqueJugador, ataqueEnemigo){
 
     while((vidasJugador > 0)&&(vidasEnemigo > 0)){
         if (ataqueJugador == ataqueEnemigo){
-            return mensajeCombate = "Empate"
+            return "Empate"
         }else if ((ataqueJugador == ataques[0] && ataqueEnemigo == ataques[2])||(ataqueJugador == ataques[1] && ataqueEnemigo == ataques[0])||(ataqueJugador == ataques[2] && ataqueEnemigo == ataques[1])){
             vidasEnemigo--
             spanVidasEnemigo.innerHTML = vidasEnemigo
-            return mensajeCombate = "Ganaste"
+            return "Ganaste"
         }else if ((ataqueJugador == ataques[0] && ataqueEnemigo == ataques[1])||(ataqueJugador == ataques[1] && ataqueEnemigo == ataques[2])||(ataqueJugador == ataques[2] && ataqueEnemigo == ataques[0])){
             vidasJugador--
             spanVidasJugador.innerHTML = vidasJugador
-            return mensajeCombate = "Perdiste"
+            return "Perdiste"
         }   
     }
 
