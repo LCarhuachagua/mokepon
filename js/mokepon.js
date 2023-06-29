@@ -3,6 +3,7 @@ let ataqueEnemigo
 let mensajeCombate = ''
 const ataques = ['Fuego','Agua','Tierra']
 const mascotas = ['Hipodoge','Capipepo','Ratigueya','Langostelvis','Pydos']
+let mokepon =[]
 let vidasJugador = 3
 let vidasEnemigo = 3
 let parrafo
@@ -30,6 +31,7 @@ class Mokepon{
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
+        this.ataques = []
     }
 }
 
@@ -38,6 +40,48 @@ let Capipepo = new Mokepon('Capipepo', 'assets/Capipepo.png', 3)
 let Ratigueya = new Mokepon('Ratigueya', 'assets/Ratigueya.png', 3)
 let Langostelvis = new Mokepon('Langostelvis', 'assets/Langostelvis.png', 3)
 let Pydos = new Mokepon('Pydos', 'assets/Pydos.png', 3)
+
+mokepon.push(Hipodoge, Capipepo, Ratigueya, Langostelvis, Pydos)
+
+Hipodoge.ataques.push(
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🌱', id: 'boton-tierra'}
+)
+
+Capipepo.ataques.push(
+    {nombre: '🌱', id: 'boton-tierra'},
+    {nombre: '🌱', id: 'boton-tierra'},
+    {nombre: '🌱', id: 'boton-tierra'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'}
+)
+
+Ratigueya.ataques.push(
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🌱', id: 'boton-tierra'}
+)
+
+Langostelvis.ataques.push(
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🌱', id: 'boton-tierra'}
+)
+
+Pydos.ataques.push(
+    {nombre: '🌱', id: 'boton-tierra'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '💧', id: 'boton-agua'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🌱', id: 'boton-tierra'}
+)
 
 function aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
