@@ -25,6 +25,20 @@ const mensajeResultado = document.getElementById('resultado')
 const mensajeAtaqueJugador = document.getElementById('ataques-del-jugador')
 const mensajeAtaqueEnemigo = document.getElementById('ataques-del-enemigo')
 
+class Mokepon{
+    constructor(nombre, foto, vida){
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+    }
+}
+
+let Hipodoge = new Mokepon('Hipodoge', 'assets/Hipodoge.png', 3)
+let Capipepo = new Mokepon('Capipepo', 'assets/Capipepo.png', 3)
+let Ratigueya = new Mokepon('Ratigueya', 'assets/Ratigueya.png', 3)
+let Langostelvis = new Mokepon('Langostelvis', 'assets/Langostelvis.png', 3)
+let Pydos = new Mokepon('Pydos', 'assets/Pydos.png', 3)
+
 function aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
