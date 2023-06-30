@@ -17,11 +17,14 @@ const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-const radiobtnHipodoge = document.getElementById('Hipodoge')
-const radiobtnCapipepo = document.getElementById('Capipepo')
-const radiobtnRatigueya = document.getElementById('Ratigueya')
-const radiobtnLangostelvis = document.getElementById('Langostelvis')
-const radiobtnPydos = document.getElementById('Pydos')
+
+/* mokepons */
+let radiobtnHipodoge
+let radiobtnCapipepo
+let radiobtnRatigueya
+let radiobtnLangostelvis
+let radiobtnPydos
+
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 const mensajeResultado = document.getElementById('resultado')
@@ -217,6 +220,12 @@ function iniciarJuego(){
     })
 
     sectionReiniciar.style.display = 'none'
+
+    radiobtnHipodoge = document.getElementById('Hipodoge')
+    radiobtnCapipepo = document.getElementById('Capipepo')
+    radiobtnRatigueya = document.getElementById('Ratigueya')
+    radiobtnLangostelvis = document.getElementById('Langostelvis')
+    radiobtnPydos = document.getElementById('Pydos')
 
     botonFuego = document.getElementById('boton-fuego')
     botonFuego.addEventListener('click',ataqueFuego)
