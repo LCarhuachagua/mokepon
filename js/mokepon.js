@@ -1,10 +1,12 @@
 let ataqueJugador
 let ataqueEnemigo
 let mensajeCombate = ''
+let ataques1
 const ataques = ['Fuego','Agua','Tierra']
 const mascotas = ['Hipodoge','Capipepo','Ratigueya','Langostelvis','Pydos']
 let mokepon =[]
 let opcionDeMokepones
+let botonesDePokemones
 let vidasJugador = 3
 let vidasEnemigo = 3
 let parrafo
@@ -12,11 +14,18 @@ let botonFuego
 let botonAgua
 let botonTierra
 let btnMascota
+let mascotaJugador
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
+const botonesAtaques= document.getElementById('botones-ataques')
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+const spanMascotaJugador = document.getElementById('mascota-jugador')
+const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
+const mensajeResultado = document.getElementById('resultado')
+const mensajeAtaqueJugador = document.getElementById('ataques-del-jugador')
+const mensajeAtaqueEnemigo = document.getElementById('ataques-del-enemigo')
 
 /* mokepons */
 let radiobtnHipodoge
@@ -24,12 +33,6 @@ let radiobtnCapipepo
 let radiobtnRatigueya
 let radiobtnLangostelvis
 let radiobtnPydos
-
-const spanMascotaJugador = document.getElementById('mascota-jugador')
-const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
-const mensajeResultado = document.getElementById('resultado')
-const mensajeAtaqueJugador = document.getElementById('ataques-del-jugador')
-const mensajeAtaqueEnemigo = document.getElementById('ataques-del-enemigo')
 
 class Mokepon{
     constructor(nombre, foto, vida){
@@ -93,8 +96,8 @@ function aleatorio(min, max){
 }
 
 function seleccionarMascotaEnemigo(){
-    let indice = aleatorio(1,5)
-    spanMascotaEnemigo.innerHTML = mascotas[indice-1]
+    let indice = aleatorio(1,mokepon.length)
+    spanMascotaEnemigo.innerHTML = mokepon[indice-1].nombre
 }
 
 function ataqueAleatorioEnemigo(){
@@ -103,32 +106,51 @@ function ataqueAleatorioEnemigo(){
     crearMensaje()
 }
 
-function buttonChecked(radiobutton, index){
-    if (radiobutton.checked){
-        spanMascotaJugador.innerHTML = mascotas[index]
-    }
-}
-
 function seleccionarMascotaJugador(){
     
     sectionSeleccionarMascota.style.display = 'none'
     sectionSeleccionarAtaque.style.display = 'flex'
 
     if (radiobtnHipodoge.checked){
-        spanMascotaJugador.innerHTML = "Hipodoge"
+        spanMascotaJugador.innerHTML = radiobtnHipodoge.id
+        mascotaJugador = radiobtnHipodoge.id
     }else if (radiobtnCapipepo.checked){
-        spanMascotaJugador.innerHTML = "Capipepo"
+        spanMascotaJugador.innerHTML = radiobtnCapipepo.id
+        mascotaJugador = radiobtnCapipepo.id
     }else if (radiobtnRatigueya.checked){
-        spanMascotaJugador.innerHTML = "Ratigueya"
+        spanMascotaJugador.innerHTML = radiobtnRatigueya.id
+        mascotaJugador = radiobtnRatigueya.id
     }else if (radiobtnLangostelvis.checked){
-        spanMascotaJugador.innerHTML = "Langostelvis"
+        spanMascotaJugador.innerHTML = radiobtnLangostelvis.id
+        mascotaJugador = radiobtnLangostelvis.id
     }else if (radiobtnPydos.checked){
-        spanMascotaJugador.innerHTML = "Pydos"
+        spanMascotaJugador.innerHTML = radiobtnPydos.id
+        mascotaJugador = radiobtnPydos.id
     }else{
         alert('Selecciona una mascota')
     }
+
+    extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
 
+}
+
+function extraerAtaques(mascota){
+    for (let i = 0; i < mokepon.length; i++) {
+        if (mascota === mokepon[i].nombre){
+            ataques1 = mokepon[i].ataques
+        }
+    }
+    mostrarAtaques(ataques1)
+}
+
+function mostrarAtaques(ataques1){
+    ataques1.forEach(ataques1 => {
+    botonesDePokemones = `
+        <button id="${ataques1.id}" class="boton-de-ataque">${ataques1.nombre}</button>
+        `
+    botonesAtaques.innerHTML += botonesDePokemones
+    })
 }
 
 function ataqueFuego(){
@@ -227,12 +249,12 @@ function iniciarJuego(){
     radiobtnLangostelvis = document.getElementById('Langostelvis')
     radiobtnPydos = document.getElementById('Pydos')
 
-    botonFuego = document.getElementById('boton-fuego')
+    /* botonFuego = document.getElementById('boton-fuego')
     botonFuego.addEventListener('click',ataqueFuego)
     botonAgua = document.getElementById('boton-agua')
     botonAgua.addEventListener('click',ataqueAgua)
     botonTierra = document.getElementById('boton-tierra')
-    botonTierra.addEventListener('click',ataqueTierra)
+    botonTierra.addEventListener('click',ataqueTierra) */
 
     botonReiniciar.addEventListener('click', reiniciarJuego)
 }
