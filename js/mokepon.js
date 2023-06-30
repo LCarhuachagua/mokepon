@@ -4,7 +4,7 @@ let mensajeCombate = ''
 let ataques1
 const ataques = ['Fuego','Agua','Tierra']
 const mascotas = ['Hipodoge','Capipepo','Ratigueya','Langostelvis','Pydos']
-let mokepon =[]
+let mokepons =[]
 let opcionDeMokepones
 let botonesDePokemones
 let vidasJugador = 3
@@ -89,15 +89,15 @@ Pydos.ataques.push(
     {nombre: '🌱', id: 'boton-tierra'}
 )
 
-mokepon.push(Hipodoge, Capipepo, Ratigueya, Langostelvis, Pydos)
+mokepons.push(Hipodoge, Capipepo, Ratigueya, Langostelvis, Pydos)
 
 function aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function seleccionarMascotaEnemigo(){
-    let indice = aleatorio(1,mokepon.length)
-    spanMascotaEnemigo.innerHTML = mokepon[indice-1].nombre
+    let indice = aleatorio(1,mokepons.length)
+    spanMascotaEnemigo.innerHTML = mokepons[indice-1].nombre
 }
 
 function ataqueAleatorioEnemigo(){
@@ -136,20 +136,26 @@ function seleccionarMascotaJugador(){
 }
 
 function extraerAtaques(mascota){
-    for (let i = 0; i < mokepon.length; i++) {
-        if (mascota === mokepon[i].nombre){
-            ataques1 = mokepon[i].ataques
+    for (let i = 0; i < mokepons.length; i++) {
+        if (mascota === mokepons[i].nombre){
+            ataques1 = mokepons[i].ataques
         }
     }
     mostrarAtaques(ataques1)
 }
 
-function mostrarAtaques(ataques1){
-    ataques1.forEach(ataques1 => {
-    botonesDePokemones = `
-        <button id="${ataques1.id}" class="boton-de-ataque">${ataques1.nombre}</button>
+/**
+ * 
+ * @param {Array<Object>} ataques 
+ */
+function mostrarAtaques(ataques) {
+    ataques.forEach(ataque => {
+        botonesDePokemones = `
+            <button id="${ataque.id}" class="boton-de-ataque">
+                ${ataque.nombre}
+            </button>
         `
-    botonesAtaques.innerHTML += botonesDePokemones
+        botonesAtaques.innerHTML += botonesDePokemones
     })
 }
 
@@ -230,7 +236,7 @@ function iniciarJuego(){
     
     sectionSeleccionarAtaque.style.display = 'none'   
 
-    mokepon.forEach((mokepon)=>{
+    mokepons.forEach((mokepon)=>{
     opcionDeMokepones = `
         <input type="radio" name="mascota" id="${mokepon.nombre}"/>
         <label class="tarjeta-de-mokepon" for="${mokepon.nombre}">
