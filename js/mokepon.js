@@ -4,6 +4,7 @@ let mensajeCombate = ''
 const ataques = ['Fuego','Agua','Tierra']
 const mascotas = ['Hipodoge','Capipepo','Ratigueya','Langostelvis','Pydos']
 let mokepon =[]
+let opcionDeMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
 let parrafo
@@ -11,6 +12,7 @@ let botonFuego
 let botonAgua
 let botonTierra
 let btnMascota
+const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonReiniciar = document.getElementById('boton-reiniciar')
@@ -40,8 +42,6 @@ let Capipepo = new Mokepon('Capipepo', 'assets/Capipepo.png', 3)
 let Ratigueya = new Mokepon('Ratigueya', 'assets/Ratigueya.png', 3)
 let Langostelvis = new Mokepon('Langostelvis', 'assets/Langostelvis.png', 3)
 let Pydos = new Mokepon('Pydos', 'assets/Pydos.png', 3)
-
-mokepon.push(Hipodoge, Capipepo, Ratigueya, Langostelvis, Pydos)
 
 Hipodoge.ataques.push(
     {nombre: '💧', id: 'boton-agua'},
@@ -82,6 +82,8 @@ Pydos.ataques.push(
     {nombre: '🔥', id: 'boton-fuego'},
     {nombre: '🌱', id: 'boton-tierra'}
 )
+
+mokepon.push(Hipodoge, Capipepo, Ratigueya, Langostelvis, Pydos)
 
 function aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -202,6 +204,18 @@ function iniciarJuego(){
     btnMascota.addEventListener('click',seleccionarMascotaJugador)
     
     sectionSeleccionarAtaque.style.display = 'none'   
+
+    mokepon.forEach((mokepon)=>{
+    opcionDeMokepones = `
+        <input type="radio" name="mascota" id="${mokepon.nombre}"/>
+        <label class="tarjeta-de-mokepon" for="${mokepon.nombre}">
+            <p>${mokepon.nombre}</p>
+            <img src="${mokepon.foto}" alt="${mokepon.nombre}"/>
+        </label>
+        `
+    contenedorTarjetas.innerHTML += opcionDeMokepones
+    })
+
     sectionReiniciar.style.display = 'none'
 
     botonFuego = document.getElementById('boton-fuego')
