@@ -13,6 +13,7 @@ let parrafo
 let botonFuego
 let botonAgua
 let botonTierra
+let botones = []
 let btnMascota
 let mascotaJugador
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
@@ -91,6 +92,12 @@ Pydos.ataques.push(
 
 mokepons.push(Hipodoge, Capipepo, Ratigueya, Langostelvis, Pydos)
 
+/**
+ * 
+ * @param {number} min
+ * @param {number} max 
+ * @returns number
+ */
 function aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -151,12 +158,24 @@ function extraerAtaques(mascota){
 function mostrarAtaques(ataques) {
     ataques.forEach(ataque => {
         botonesDePokemones = `
-            <button id="${ataque.id}" class="boton-de-ataque">
+            <button id="${ataque.id}" class="boton-de-ataque BAtaque">
                 ${ataque.nombre}
             </button>
         `
         botonesAtaques.innerHTML += botonesDePokemones
     })
+    botonFuego = document.getElementById('boton-fuego')
+    botonAgua = document.getElementById('boton-agua')
+    botonTierra = document.getElementById('boton-tierra')
+    botones = document.querySelectorAll('.BAtaque')
+
+    botonFuego.addEventListener('click',ataqueFuego)
+    botonAgua.addEventListener('click',ataqueAgua)
+    botonTierra.addEventListener('click',ataqueTierra)
+}
+
+function secuenciaAtaque(){
+    
 }
 
 function ataqueFuego(){
@@ -254,13 +273,6 @@ function iniciarJuego(){
     radiobtnRatigueya = document.getElementById('Ratigueya')
     radiobtnLangostelvis = document.getElementById('Langostelvis')
     radiobtnPydos = document.getElementById('Pydos')
-
-    /* botonFuego = document.getElementById('boton-fuego')
-    botonFuego.addEventListener('click',ataqueFuego)
-    botonAgua = document.getElementById('boton-agua')
-    botonAgua.addEventListener('click',ataqueAgua)
-    botonTierra = document.getElementById('boton-tierra')
-    botonTierra.addEventListener('click',ataqueTierra) */
 
     botonReiniciar.addEventListener('click', reiniciarJuego)
 }
