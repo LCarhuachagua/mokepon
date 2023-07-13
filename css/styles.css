@@ -81,7 +81,7 @@ input:checked + label{
     border-radius: 10px;
     box-sizing: border-box;
     border-color: transparent;
-    width: 100px;
+    width: 80px;
     color: white;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

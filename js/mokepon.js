@@ -194,12 +194,15 @@ function secuenciaAtaque(){
             if(e.target.textContent === '🔥'){
                 ataquePorJugador.push('FUEGO')
                 boton.style.backgroundColor = '#112f58'
+                boton.disabled = true
             }else if(e.target.textContent === '💧'){
                 ataquePorJugador.push('AGUA')
                 boton.style.backgroundColor = '#112f58'
+                boton.disabled = true
             }else if(e.target.textContent === '🌱'){
                 ataquePorJugador.push('TIERRA')
                 boton.style.backgroundColor = '#112f58'
+                boton.disabled = true
             }
             ataqueAleatorioEnemigo()
         })
