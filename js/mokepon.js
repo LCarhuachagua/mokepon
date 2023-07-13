@@ -40,20 +40,27 @@ let radiobtnRatigueya
 let radiobtnLangostelvis
 let radiobtnPydos
 
+const MokeponType = {
+    FUEGO: 'Fuego',
+    AGUA: 'Agua',
+    TIERRA: 'Tierra'
+}
+
 class Mokepon{
-    constructor(nombre, foto, vida){
+    constructor(nombre, foto, vida, tipo){
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
+        this.tipo = tipo
         this.ataques = []
     }
 }
 
-let Hipodoge = new Mokepon('Hipodoge', 'assets/Hipodoge.png', 3)
-let Capipepo = new Mokepon('Capipepo', 'assets/Capipepo.png', 3)
-let Ratigueya = new Mokepon('Ratigueya', 'assets/Ratigueya.png', 3)
-let Langostelvis = new Mokepon('Langostelvis', 'assets/Langostelvis.png', 3)
-let Pydos = new Mokepon('Pydos', 'assets/Pydos.png', 3)
+let Hipodoge = new Mokepon('Hipodoge', 'assets/Hipodoge.png', 3, MokeponType.FUEGO)
+let Capipepo = new Mokepon('Capipepo', 'assets/Capipepo.png', 3, MokeponType.AGUA)
+let Ratigueya = new Mokepon('Ratigueya', 'assets/Ratigueya.png', 3, MokeponType.TIERRA)
+let Langostelvis = new Mokepon('Langostelvis', 'assets/Langostelvis.png', 3, MokeponType.AGUA)
+let Pydos = new Mokepon('Pydos', 'assets/Pydos.png', 3, MokeponType.FUEGO)
 
 Hipodoge.ataques.push(
     {nombre: '💧', id: 'boton-agua'},
@@ -166,6 +173,9 @@ function extraerAtaques(mascota){
     for (let i = 0; i < mokepons.length; i++) {
         if (mascota === mokepons[i].nombre){
             ataques1 = mokepons[i].ataques
+            console.log(mokepons[i].nombre)
+            console.log("es de tipo:")
+            console.log(mokepons[i].tipo)
         }
     }
     mostrarAtaques(ataques1)
