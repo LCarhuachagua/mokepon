@@ -61,6 +61,7 @@ let Capipepo = new Mokepon('Capipepo', 'assets/Capipepo.png', 3, MokeponType.AGU
 let Ratigueya = new Mokepon('Ratigueya', 'assets/Ratigueya.png', 3, MokeponType.TIERRA)
 let Langostelvis = new Mokepon('Langostelvis', 'assets/Langostelvis.png', 3, MokeponType.AGUA)
 let Pydos = new Mokepon('Pydos', 'assets/Pydos.png', 3, MokeponType.FUEGO)
+let Brownydor = new Mokepon('Brownydor','assets/Brownydor.png', 3, MokeponType.FUEGO)
 
 Hipodoge.ataques.push(
     {nombre: '💧', id: 'boton-agua'},
@@ -102,7 +103,15 @@ Pydos.ataques.push(
     {nombre: '🌱', id: 'boton-tierra'}
 )
 
-mokepons.push(Hipodoge, Capipepo, Ratigueya, Langostelvis, Pydos)
+Brownydor.ataques.push(
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '🔥', id: 'boton-fuego'},
+    {nombre: '💧', id: 'boton-tierra'},
+    {nombre: '🌱', id: 'boton-agua'}
+)
+
+mokepons.push(Hipodoge, Capipepo, Ratigueya, Langostelvis, Pydos, Brownydor)
 
 /**
  * 
@@ -160,6 +169,9 @@ function seleccionarMascotaJugador(){
     }else if (radiobtnPydos.checked){
         spanMascotaJugador.innerHTML = radiobtnPydos.id
         mascotaJugador = radiobtnPydos.id
+    }else if (radiobtnBrownydor.checked){
+        spanMascotaJugador.innerHTML = radiobtnBrownydor.id
+        mascotaJugador = radiobtnBrownydor.id
     }else{
         alert('Selecciona una mascota')
     }
@@ -320,6 +332,7 @@ function iniciarJuego(){
     radiobtnRatigueya = document.getElementById('Ratigueya')
     radiobtnLangostelvis = document.getElementById('Langostelvis')
     radiobtnPydos = document.getElementById('Pydos')
+    radiobtnBrownydor = document.getElementById('Brownydor')
 
     botonReiniciar.addEventListener('click', reiniciarJuego)
 }
